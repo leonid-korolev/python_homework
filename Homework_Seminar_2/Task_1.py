@@ -5,17 +5,21 @@
 
 # - 6782 -> 23
 # - 0,56 -> 11
-
-try:
-    n = float(input('Введите число: '))
-except ValueError:
-    print ('Это не число!')
-    print()
-n = abs(float(n))
-str_n = str(n)
-str_n = str_n.replace('.','')
-lst_str = list(str_n)
-lst_num = map(int, lst_str)
-s = sum(lst_num)
-print(f'{n} -> {s}')
-print()
+def input_verification():
+    digit = 1
+    while digit:
+        try:
+            n = float(input('Введите число: '))
+            n = abs(float(n))
+            str_n = str(n)
+            str_n = str_n.replace('.','')
+            lst_str = list(str_n)
+            lst_num = map(int, lst_str)
+            s = sum(lst_num)
+            print(f'{n} -> {s}')
+            digit = 0
+            quit()
+        except ValueError:
+            print ('Это не число!')
+    return s        
+print(input_verification())
